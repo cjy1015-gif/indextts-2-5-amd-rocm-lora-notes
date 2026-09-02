@@ -1,0 +1,27 @@
+# Private data and model artifacts
+data/**/*.wav
+data/**/*.flac
+data/**/*.mp3
+data/**/*.jsonl
+models/
+checkpoints/
+outputs/
+logs/
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+*.bin
+*.wav
+*.flac
+*.mp3
+
+# Local environments and secrets
+.venv/
+venv/
+__pycache__/
+.env
+*.log
+*.pid
+*.tmp
+*.swp
