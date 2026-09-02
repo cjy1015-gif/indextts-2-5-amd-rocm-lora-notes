@@ -1,0 +1,55 @@
+{
+  "model": {
+    "device": "cuda:0",
+    "use_bf16": false,
+    "use_cuda_kernel": false,
+    "use_torch_compile": false,
+    "use_deepspeed": false,
+    "use_accel": false,
+    "use_qwen_emo": false
+  },
+  "training": {
+    "objective": "native_acoustic_mel_token_cross_entropy",
+    "precision": "fp32",
+    "batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "gradient_clip_norm": 1.0,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00004,
+    "betas": [0.9, 0.95],
+    "eps": 0.00000001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "min_lr_ratio": 0.1,
+    "max_passes": 1,
+    "checkpoint_every_optimizer_steps": 50
+  },
+  "lora": {
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "target_module_families": ["c_attn", "c_proj", "c_fc"]
+  },
+  "data": {
+    "manifest": "REPLACE_WITH_AUTHORIZED_MANIFEST.jsonl",
+    "manifest_sha256": "REPLACE_WITH_SHA256",
+    "min_seconds": 1.0,
+    "max_seconds": 12.0,
+    "seed": 1234
+  },
+  "runtime": {
+    "num_workers": 0,
+    "pin_memory": false,
+    "prefetch_factor": null,
+    "persistent_workers": false,
+    "cpu_threads": 8,
+    "gpu_memory_fraction": 0.8,
+    "offline_model_loading": true
+  },
+  "privacy": {
+    "public_repository": false,
+    "keep_audio_private": true,
+    "keep_weights_private": true,
+    "keep_logs_private": true
+  }
+}
